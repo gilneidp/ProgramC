@@ -1,6 +1,7 @@
-//
-// SNMP Client
-//
+/*
+Usage: ./problem2 < ipInReceives.txt
+Compailing gcc -o Problem2 Problem2.c
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +14,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <netdb.h>      // for struct hostent
+#include <netdb.h>    
 
 #define MAX 100
 #define MAX_REQUEST 1024
@@ -152,12 +153,12 @@ main(int argc, char **argv)
 		    write(sockfd2, request, strlen(request));
 	    	getLine(sockfd2, reply, MAX_REPLY);
     		puts(reply);
-    		strcpy(from, "gilvanveras@cis.ksu.edu");
+    		strcpy(from, "monitoring@ksu.edu");
 	    	sprintf(request,"MAIL FROM:<%s>\r\n", from);
 		    write(sockfd2, request, strlen(request));
 		    getLine(sockfd2, reply, MAX_REPLY);
     		puts(reply);
-    		strcpy(to, "gilvanveras@cis.ksu.edu");
+    		strcpy(to, "gilneidp@ksu.edu");
 	    	sprintf(request,"RCPT TO:<%s>\r\n", to);
 	    	write(sockfd2, request, strlen(request));
     		getLine(sockfd2, reply, MAX_REPLY);
